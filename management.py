@@ -633,10 +633,10 @@ logo_seperation.place(x=164, y=52)
 # page2_search_frame = Frame(page2, bg="#544B4E")
 
 # ===============Page2 background ===============
-# page2_background = Frame(page2,height=700,width=1250)
-# page2_background.place(x=0,y=50)
-# background_lbl = Label(page2_background,image=background_img)
-# background_lbl.place(x=0,y=0)
+# page2_background = Frame(page2, height=700, width=1250)
+# page2_background.place(x=0, y=50)
+# background_lbl = Label(page2_background, image=background_img)
+# background_lbl.place(x=0, y=0)
 # ===============================================
 # ============ page2 labels =====================
 title = Label(page2, fg="white", background='#22254B', text=" INDUSTRIAL AND ALLIED SERVICES MANAGEMENT SYSTEM  ", font=(
