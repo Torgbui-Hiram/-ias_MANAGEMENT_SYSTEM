@@ -56,6 +56,18 @@ date_employed_entry = StringVar
 unique_entry = StringVar
 role_entry = StringVar()
 id_number_entry = StringVar()
+# ===============CLAIM REQUEST VARIABLES==========================
+request_date = StringVar()
+person_request = StringVar()
+station_name = StringVar()
+work_scope1 = StringVar()
+work_scope2 = StringVar()
+item = IntVar()
+item_quantity = StringVar()
+item_name = StringVar()
+item_price = IntVar()
+total_cost = IntVar()
+
 # ================ Employee Assigned roll=========================
 role_designated = ["GENERATOR", "FEUL PUMPS", "FLAG POLE", "CONFORMANCE TEAM",
                    "ELECTRICAL", "CEVIL WORKS", "PIPE WORKS", "AUTOMATION"]
@@ -260,7 +272,7 @@ logo = ImageTk.PhotoImage(file="image\ias.png")
 phone_lbl_img = ImageTk.PhotoImage(file="image\icons8-telephone-24.png")
 
 
-def remove_staff():
+def claim_request():
     page2_add_frame.place_forget()
     page2_blue_frame.place(x=400, y=100, width=610, height=610)
     page2_remove_frame.place(x=5, y=5, width=600, height=600)
@@ -275,67 +287,68 @@ def remove_staff():
     seperation = Frame(page2_remove_frame, width=450,
                        height=5, background='#E55247')
     seperation.place(x=160, y=74)
-
+# ===============input and labels==========================
     date_lbl = Label(page2_remove_frame, font=('airial', 12),
                      text=('DATE.'), background='#544B4E', foreground='black').place(x=400, y=105)
     request_date_entry = ttk.Entry(
-        page2_remove_frame, font=('Helvetica', 15, 'bold'))
+        page2_remove_frame, textvariable=request_date, font=('Helvetica', 15, 'bold'))
     request_date_entry.place(x=455, y=105, width=140)
     request_date_entry.configure(background='white')
 
     team_leader_lbl = Label(page2_remove_frame, font=('airial', 12),
                             text=('TEAM LEADER:'), background='#544B4E', foreground='black').place(x=10, y=105)
     team_leader_entry = ttk.Entry(
-        page2_remove_frame, font=('Helvetica', 15, 'bold'))
+        page2_remove_frame, textvariable=person_request, font=('Helvetica', 15, 'bold'))
     team_leader_entry.place(x=140, y=105)
     team_leader_entry.configure(background='white')
 
     preventative_lbl = Label(page2_remove_frame, font=('airial', 12),
                              text=('STATION NAME:'), foreground='black', background='#544B4E').place(x=10, y=200)
     station_name_entry = ttk.Entry(
-        page2_remove_frame, font=('Helvetica', 15, 'bold'))
+        page2_remove_frame, textvariable=station_name, font=('Helvetica', 15, 'bold'))
     station_name_entry.place(x=140, y=200)
     preventative_lbl = ttk.Label(page2_remove_frame, font=('airial', 12),
                                  text=('TYPE OF MAINTENANCE ACTIVITY:'), foreground='black', background='#544B4E').place(x=10, y=150)
 
     corrective_check_box = ttk.Checkbutton(
-        page2_remove_frame, text='CORRECTIVE')
+        page2_remove_frame, variable=1, textvariable=work_scope1, text='CORRECTIVE')
     corrective_check_box.place(x=280, y=150)
     corrective_check_box = ttk.Checkbutton(
-        page2_remove_frame, text='PREVENTATIVE')
+        page2_remove_frame, variable=1, textvariable=work_scope2, text='PREVENTATIVE')
     corrective_check_box.place(x=380, y=150)
 
     item_lbl = Label(page2_remove_frame, font=('airial', 12),
                      text=('ITEM'), foreground='black', background='#544B4E').place(x=10, y=260)
-    item_entry = ttk.Entry(page2_remove_frame, font=('Helvetica', 15, 'bold'))
+    item_entry = ttk.Entry(
+        page2_remove_frame, textvariable=item, font=('Helvetica', 15, 'bold'))
     item_entry.place(x=5, y=290, width=50)
     item_entry.configure(background='white')
 
     quantity_lbl = Label(page2_remove_frame, font=('airial', 12),
                          text=('QUANTITY'), foreground='black', background='#544B4E').place(x=75, y=260)
     quantity_entry = ttk.Entry(
-        page2_remove_frame, font=('Helvetica', 15, 'bold'))
+        page2_remove_frame, textvariable=item_quantity, font=('Helvetica', 15, 'bold'))
     quantity_entry.place(x=60, y=290, width=100)
     quantity_entry.configure(background='white')
     # ========================================================
     descpription_lbl = Label(page2_remove_frame, font=('airial', 12),
                              text=('DESCRIPTION'), foreground='black', background='#544B4E').place(x=190, y=260)
     description_entry = ttk.Entry(
-        page2_remove_frame, font=('Helvetica', 15, 'bold'))
+        page2_remove_frame, textvariable=item_name, font=('Helvetica', 15, 'bold'))
     description_entry.place(width=140, x=165, y=290)
     description_entry.configure(background='white')
 
     unit_cost_lbl = Label(page2_remove_frame, font=('airial', 12),
                           text=('UNIT COST'), foreground='black', background='#544B4E').place(x=340, y=260)
     unit_cost_entry = ttk.Entry(
-        page2_remove_frame, font=('Helvetica', 15, 'bold'))
+        page2_remove_frame, textvariable=item_price, font=('Helvetica', 15, 'bold'))
     unit_cost_entry.place(width=140, x=310, y=290)
     unit_cost_entry.configure(background='white')
 
     total_cost_lbl = Label(page2_remove_frame, font=('airial', 12),
                            text=('TOTAL COST'), foreground='black', background='#544B4E').place(x=480, y=260)
     total_cost_entry = ttk.Entry(
-        page2_remove_frame, font=('Helvetica', 15, 'bold'))
+        page2_remove_frame, textvariable=total_cost, font=('Helvetica', 15, 'bold'))
     total_cost_entry.place(width=140, x=455, y=290)
     total_cost_entry.configure(background='white')
     # ================== Reference column ====================
@@ -393,7 +406,8 @@ def remove_staff():
         page2_remove_frame, font=('Helvetica', 15, 'bold'))
     approval_date_entry.place(width=100, x=475, y=430)
     # ================ Buttons For Action=================
-    submit_btn = ttk.Button(page2_remove_frame, text='SUBMIT', cursor='hand2')
+    submit_btn = ttk.Button(
+        page2_remove_frame, command=result, text='SUBMIT', cursor='hand2')
     submit_btn.place(x=500, y=500)
 
     extra_btn = ttk.Button(page2_remove_frame, text='EXTRA', cursor='hand2')
@@ -421,8 +435,30 @@ def remove_staff():
     by_contact_lbl = ttk.Label(seperation_below_frame, font=('Helvetiac', 10, 'bold'),
                                text=('0548715522'), foreground='#1A237E', background='white').place(x=500, y=30)
 
+# def claim_details():
+#     request_date.get()
+#     person_request.get()
+#     station_name.get()
+#     work_scope1.get()
+#     work_scope2.get()
+#     item.get()
+#     item_quantity.get()
+#     item_name.get()
+#     item_price.get()
+#     total_cost.get()
+
+
+def result():
+    claim = []
+    info = (
+        f"Team leader:{person_request.get()} Claimed:{ total_cost.get()} /n for {work_scope1.get() or work_scope2.get()}")
+    claim.append(info)
+    print(claim)
+
 
 # ==========Search for existed staffs============
+
+
 def search_staff():
     page2_add_frame.place_forget()
     page2_remove_frame.place_forget()
@@ -694,14 +730,14 @@ prove_of_id = ttk.Combobox(page2_add_frame, textvariable=id_prove, values=id_typ
 # ==========================================
 # ============== Page2 Button ==============
 page2_Next_btn = ttk.Button(
-    page2, text='Next', state=DISABLED, command=lambda: show_frame(page3))
+    page2, text='STAFF REGISTER', state=DISABLED, command=lambda: show_frame(page3))
 page2_Next_btn.place(x=1130, y=550, height=150, width=200)
 
 page2_add_btn = ttk.Button(page2, text='ADD STAFF', cursor="hand2",
                            command=lambda: add_staff())
 page2_add_btn.place(x=1130, y=100, height=150, width=200)
 page2_remove_btn = ttk.Button(
-    page2, command=lambda: remove_staff(), text='REQUEST FORM', cursor="hand2",)
+    page2, command=lambda: claim_request(), text='REQUEST FORM', cursor="hand2",)
 page2_remove_btn.place(x=1130, y=250, height=150, width=200)
 page2_search_btn = ttk.Button(
     page2, command=lambda: search_staff(), text='VEHICLE & FUEL', cursor="hand2",)
