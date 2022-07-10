@@ -730,7 +730,7 @@ prove_of_id = ttk.Combobox(page2_add_frame, textvariable=id_prove, values=id_typ
 # ==========================================
 # ============== Page2 Button ==============
 page2_Next_btn = ttk.Button(
-    page2, text='Next', state=DISABLED, command=lambda: show_frame(page3))
+    page2, text='STAFF REGISTER', state=DISABLED, command=lambda: show_frame(page3))
 page2_Next_btn.place(x=1130, y=550, height=150, width=200)
 
 page2_add_btn = ttk.Button(page2, text='ADD STAFF', cursor="hand2",
